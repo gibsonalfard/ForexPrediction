@@ -41,27 +41,27 @@ regressor = Sequential()
 
 # Adding the first LSTM layer and some Dropout regularisation
 
-regressor.add(LSTM(units = 50, return_sequences = True, input_shape = (X_train.shape[1], 1)))
+regressor.add(LSTM(units = 70, return_sequences = True, input_shape = (X_train.shape[1], 1)))
 regressor.add(Dropout(0.2))
 
 # Adding a second LSTM layer and some Dropout regularisation
-regressor.add(LSTM(units = 50, return_sequences = True))
+regressor.add(LSTM(units = 70, return_sequences = True))
 regressor.add(Dropout(0.2))
 
 # Adding a third LSTM layer and some Dropout regularisation
-regressor.add(LSTM(units = 50, return_sequences = True))
+regressor.add(LSTM(units = 70, return_sequences = True))
 regressor.add(Dropout(0.2))
 
 # Adding a forth LSTM layer and some Dropout regularisation
-regressor.add(LSTM(units = 50, return_sequences = True))
+regressor.add(LSTM(units = 70, return_sequences = True))
 regressor.add(Dropout(0.2))
 
 # Adding a fifth LSTM layer and some Dropout regularisation
-regressor.add(LSTM(units = 50, return_sequences = True))
+regressor.add(LSTM(units = 70, return_sequences = True))
 regressor.add(Dropout(0.2))
 
 # Adding a fourth LSTM layer and some Dropout regularisation
-regressor.add(LSTM(units = 50))
+regressor.add(LSTM(units = 70))
 regressor.add(Dropout(0.2))
 
 # Adding the output layer
@@ -71,7 +71,7 @@ regressor.add(Dense(units = 1))
 regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 # Fitting the RNN to the Training set
-regressor.fit(X_train, y_train, epochs = 100, batch_size = 32)
+regressor.fit(X_train, y_train, epochs = 75, batch_size = 32)
 
 
 # Part 3 - Making the predictions and visualising the results
@@ -92,6 +92,7 @@ X_test = np.array(X_test)
 X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
+print("This is Predicted_stock_price " + predicted_stock_price)
 
 # Visualising the results
 plt.plot(real_stock_price, color = 'red', label = 'Real Forex Price')
