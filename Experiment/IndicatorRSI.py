@@ -37,7 +37,7 @@ def RSI(series, period):
 df = pd.DataFrame(get_stock())
 #bk = df;
 for i in range(1, len(df)):
-   df.loc[i-1,'RSI'] = RSI(df['Open'], i)
+   df.loc[i,'RSI'] = RSI(df['Open'], i)
    print(i)
 df.to_csv(path_or_buf="../Resources/BackUp.csv")
 df.tail()
