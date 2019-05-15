@@ -37,10 +37,10 @@ def RSI(series, period):
 df = pd.DataFrame(get_stock())
 #bk = df;
 for i in range(1, len(df)):
-   df.loc[i,'RSI'] = RSI(df['Open'], i)
+   df.loc[i-1,'Action'] = 1 if (RSI(df['Close'], i) > 70) else  -1 if (RSI(df['Close'], i) < 30) else 0
    print(i)
 df.to_csv(path_or_buf="../Resources/BackUp.csv")
 df.tail()
 
-plt.plot(df["Open"], color="green", label = "Real Data")
+plt.plot(df["Open"], color="green", label = "Real Close Data")
 plt.show
