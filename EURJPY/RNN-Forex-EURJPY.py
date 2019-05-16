@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt # library for data vizualization
 import pandas as pd # library for data analysis
 
 # Importing the training set
-dataset_train_ = pd.read_csv('D:\.Semester 4\Proyek II\HERE\ForexPrediction\EURJPY\EURJPY_new_train.csv')
+dataset_train_ = pd.read_csv('../Resources/EURJPY_new_train.csv')
 training_set_ = dataset_train_.iloc[:, 2:3].values
 
 # Feature Scaling
@@ -71,13 +71,13 @@ regressor.add(Dense(units = 1))
 regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 # Fitting the RNN to the Training set
-regressor.fit(X_train, y_train, epochs = 100, batch_size = 32)
+regressor.fit(X_train, y_train, epochs = 50, batch_size = 32)
 
 
 # Part 3 - Making the predictions and visualising the results
 
 # Getting the real stock price of 2017
-dataset_test = pd.read_csv('D:\.Semester 4\Proyek II\HERE\ForexPrediction\EURJPY\EURJPY_new_test.csv')
+dataset_test = pd.read_csv('../Resources/EURJPY_new_test.csv')
 real_stock_price = dataset_test.iloc[:, 2:3].values
 
 # Getting the predicted stock price of 2017
@@ -86,7 +86,7 @@ inputs = dataset_total[len(dataset_total) - len(dataset_test) - 60:].values
 inputs = inputs.reshape(-1,1)
 inputs = sc.transform(inputs)
 X_test = []
-for i in range(60, 120):
+for i in range(60, len(real_stock_price)):
     X_test.append(inputs[i-60:i, 0])
 X_test = np.array(X_test)
 X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
