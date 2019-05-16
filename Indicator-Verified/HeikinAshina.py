@@ -3,7 +3,7 @@
 import pandas as pd
 
 
-df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train_for_indicators.csv')
+df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train-2000-lines.csv')
 
 
 

@@ -12,7 +12,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 stocks = ['EURJPY']
 
-df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train_for_indicators.csv')
+df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train-2000-lines.csv')
 
 def RSI(series, period):
      delta = series.diff().dropna()

@@ -12,7 +12,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 stocks = ['EURJPY']
 
-df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train_for_indicators.csv')
+df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train-2000-lines.csv')
 df['26 ema'] = pd.Series.ewm(df['<CLOSE>'], span=26, adjust=False).mean()
 df['12 ema'] = pd.Series.ewm(df['<CLOSE>'], span=12, adjust=False).mean()
 df['MACD'] = (df['12 ema'] - df['26 ema'])

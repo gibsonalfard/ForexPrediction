@@ -20,7 +20,7 @@ def STOD(close, low, high, nPeriod):
     STOD = STOK.rolling(3).mean()
     return STOD
 
-df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train.csv')
+df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train-2000-lines.csv')
 
 array_high = df['<HIGH>']
 array_low = df['<LOW>']
@@ -61,8 +61,12 @@ for x in range(0,kperiods):
     Kvalue.append(float('NaN'))
     
 for x in range(kperiods,array_close.size):
-   k = ((array_close[x]-array_lowest[x-kperiods])*100/(array_highest[x-kperiods]-array_lowest[x-kperiods]))
-   Kvalue.append(k)
+    lower = (array_highest[x-kperiods]-array_lowest[x-kperiods])
+    if(lower != 0):
+        k = ((array_close[x]-array_lowest[x-kperiods])*100/lower)
+    else:
+        k = 0
+    Kvalue.append(k)
    
 df['%K'] = Kvalue
 
@@ -101,5 +105,5 @@ for x in range(15, len(Kvalue)):
 
 #print(len(Kvalue))
 df['Signal SO'] = ind
-#df.to_csv(r'D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_out_from_indicator_SO.csv', index = None, header=True)
-df.plot(y=['%K', '%D'], title = '%K and %D');
+df.to_csv(r'D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_out_from_indicator_SO.csv', index = None, header=True)
+df.plot(y=['%K', '%D'], title = '%K and %D', figsize = (100, 10));
