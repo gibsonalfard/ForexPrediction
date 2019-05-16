@@ -3,7 +3,7 @@
 import pandas as pd
 
 
-df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_traincopy.csv')
+df = pd.read_csv('D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_train_for_indicators.csv')
 
 
 
@@ -28,15 +28,17 @@ for x in range(0, len(heikin_ashi_df)):
         print("Hello World")
         if(heikin_ashi_df.loc[x, '<OPEN>'] > heikin_ashi_df.loc[x, '<CLOSE>']):
             if(((heikin_ashi_df.loc[x, '<OPEN>'] - heikin_ashi_df.loc[x, '<CLOSE>']) - (heikin_ashi_df.loc[x, '<CLOSE>'] - heikin_ashi_df.loc[x, '<LOW>'])) > 0):
-                df.loc[x, 'Signal'] = -1
+                df.loc[x, 'Signal HA'] = -1
             else:
-                df.loc[x, 'Signal'] = 0
+                df.loc[x, 'Signal HA'] = 0
         elif((heikin_ashi_df.loc[x, '<CLOSE>'] - heikin_ashi_df.loc[x, '<OPEN>']) - (heikin_ashi_df.loc[x, '<HIGH>'] - heikin_ashi_df.loc[x, '<CLOSE>']) > 0):
-            df.loc[x, 'Signal'] = 1
+            df.loc[x, 'Signal HA'] = 1
         else:
-            df.loc[x, 'Signal'] = 0
+            df.loc[x, 'Signal HA'] = 0
     else:
-        df.loc[x, 'Signal'] = 0
+        df.loc[x, 'Signal HA'] = 0
+
+df.to_csv(r'D:\Kuliah\Semester 4\Proyek 2 Data Scientific\EURJPY_out_from_indicator_HA.csv', index = None, header=True)
 #if((heikin_ashi_df['<OPEN>'].equals(heikin_ashi_df['<LOW>'])) or (heikin_ashi_df['<OPEN>'].equals(heikin_ashi_df['<HIGH>']))):
 ##    print("saasD")
 #    if(heikin_ashi_df['<OPEN>'] > heikin_ashi_df['<CLOSE>']):
