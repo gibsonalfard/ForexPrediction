@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt # library for data vizualization
 import pandas as pd # library for data analysis
 
 # Importing the training set
-dataset_train_ = pd.read_csv('../Resources/EURJPY_new_train.csv')
+dataset_train_ = pd.read_csv('../Resources/EURUSD_new_train.csv')
 training_set_ = dataset_train_.iloc[:, 2:3].values
 
 # Feature Scaling
@@ -71,13 +71,13 @@ regressor.add(Dense(units = 1))
 regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 # Fitting the RNN to the Training set
-regressor.fit(X_train, y_train, epochs = 50, batch_size = 32)
+regressor.fit(X_train, y_train, epochs = 70, batch_size = 32)
 
 
 # Part 3 - Making the predictions and visualising the results
 
 # Getting the real stock price of 2017
-dataset_test = pd.read_csv('../Resources/EURJPY_new_test.csv')
+dataset_test = pd.read_csv('../Resources/EURUSD_new_test.csv')
 real_stock_price = dataset_test.iloc[:, 2:3].values
 
 # Getting the predicted stock price of 2017
