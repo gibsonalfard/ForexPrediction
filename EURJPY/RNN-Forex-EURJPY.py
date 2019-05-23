@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt # library for data vizualization
 import pandas as pd # library for data analysis
 
 # Importing the training set
-dataset_train_ = pd.read_csv('../Resources/EURUSD_new_train.csv')
-training_set_ = dataset_train_.iloc[:, 2:3].values
+dataset_train_ = pd.read_csv('../Resources/EURJPY_new_train.csv')
+training_set_ = dataset_train_.iloc[:, 3:4].values
 
 # Feature Scaling
 from sklearn.preprocessing import MinMaxScaler
