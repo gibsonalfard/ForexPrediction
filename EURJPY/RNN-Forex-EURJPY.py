@@ -9,6 +9,7 @@ import pandas as pd # library for data analysis
 
 # Importing the training set
 dataset_train_ = pd.read_csv('../Resources/EURJPY_new_train.csv')
+
 training_set_ = dataset_train_.iloc[:, 3:4].values
 
 # Feature Scaling
@@ -77,8 +78,8 @@ regressor.fit(X_train, y_train, epochs = 70, batch_size = 32)
 # Part 3 - Making the predictions and visualising the results
 
 # Getting the real stock price of 2017
-dataset_test = pd.read_csv('../Resources/EURUSD_new_test.csv')
-real_stock_price = dataset_test.iloc[:, 2:3].values
+dataset_test = pd.read_csv('../Resources/EURJPY_new_test.csv')
+real_stock_price = dataset_test.iloc[:, 3:4].values
 
 # Getting the predicted stock price of 2017
 dataset_total = pd.concat((dataset_train_['<OPEN>'], dataset_test['<OPEN>']), axis = 0)
